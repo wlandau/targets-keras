@@ -1,0 +1,28 @@
+---
+title: "Keras results"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(tidyverse.quiet = TRUE)
+```
+
+This report contains the results of our Keras model-fitting exercise. Here is a data frame summarizing all the models we tried and their test accuracies. It has one row per model.
+
+```{r}
+library(targets)
+tar_load(run)
+```
+
+Summary of the model with the highest test accuracy:
+
+```{r}
+tar_read(best_run)
+```
+
+Trained Keras model object with the above hyperparameters:
+
+```{r, paged.print = FALSE}
+tar_read(best_model)
+```
