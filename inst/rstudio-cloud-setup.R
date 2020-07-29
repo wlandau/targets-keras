@@ -1,5 +1,15 @@
-install.packages("remotes")
-remotes::install_github("wlandau/learndrake")
+install.packages(c(
+  "fst",
+  "keras",
+  "recipes",
+  "remotes",
+  "rmarkdown",
+  "rsample",
+  "tidyverse",
+  "visNetwork",
+  "yardstick"
+))
+remotes::install_github("wlandau/targets")
 setwd("/cloud")
 learndrake::save_notebooks("project", overwrite = TRUE)
 setwd("/cloud/project")
