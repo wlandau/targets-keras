@@ -31,6 +31,7 @@ Imports:
   recipes (>= 0.1.12),
   rmarkdown (>= 2.3),
   rsample (0.0.7),
+  tarchetypes,
   targets,
   tidyverse (>= 1.3.0),
   yardstick (>=0.0.6)
@@ -38,9 +39,9 @@ Suggests:
   clustermq (>= 0.8.9),
   visNetwork (>= 2.0.9)
 Remotes:
+  wlandau/tarchetypes
   wlandau/targets
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
-VignetteBuilder: knitr

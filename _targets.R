@@ -1,4 +1,5 @@
 library(targets)
+library(tarchetypes)
 source("R/functions.R")
 options(tidyverse.quiet = TRUE)
 
@@ -68,12 +69,5 @@ tar_pipeline(
     train_best_model(best_run, recipe),
     format = "keras"
   ),
-  tar_target(
-    report, {
-      render("report.Rmd", quiet = TRUE)
-      c(!!tar_knitr("report.Rmd"), "report.html")
-    },
-    format = "file",
-    deployment = "local"
-  )
+  tar_render(report, "report.Rmd")
 )
