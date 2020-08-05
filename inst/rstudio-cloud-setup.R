@@ -10,9 +10,7 @@ install.packages(c(
   "yardstick"
 ))
 remotes::install_github("wlandau/targets")
-setwd("/cloud")
-learndrake::save_notebooks("project", overwrite = TRUE)
-setwd("/cloud/project")
+remotes::install_github("wlandau/tarchetypes")
 reticulate::install_miniconda("miniconda")
 Sys.setenv(WORKON_HOME = "virtualenvs")
 reticulate::virtualenv_create("r-reticulate", python = "miniconda/bin/python")
