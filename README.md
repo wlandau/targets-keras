@@ -68,19 +68,17 @@ to an RStudio Cloud instance. No downloads or installations required.
 
 1.  If you are running locally instead of [this RStudio cloud
     workspace](https://rstudio.cloud/project/1430828/),
-    1.  install the [`targets`](https://github.com/wlandau/targets)
-        package, as well as the packages listed in the `tar_option_set()`
-        call in
-        [`_targets.R`](https://github.com/wlandau/targets-keras/blob/master/_targets.R).
-        Also install Keras and TensorFlow using `keras::install_keras()`
-        and run `tensorflow::tf_config()` to see if TensorFlow installed
-        correctly.
-    2.  Download the files in [this
+    1.  Download the files in [this
         repository](https://github.com/wlandau/targets-keras), either
         [through
         Git](https://happygitwithr.com/existing-github-first.html#new-rstudio-project-via-git-clone)
         or through [this
         link](https://github.com/wlandau/targets-keras/archive/master.zip).
+    2.  Run the [setup
+        script](https://github.com/wlandau/targets-keras/blob/master/setup/local.R)
+        to install the required R and Python packages. Then, run
+        `tensorflow::tf_config()` to verify that TensorFlow installed
+        correctly.
 2.  Run the `targets` pipeline by either running
     [`run.R`](https://github.com/wlandau/targets-keras/blob/master/run.R)
     or
