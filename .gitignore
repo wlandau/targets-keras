@@ -13,8 +13,6 @@ vignettes/*.pdf
 /cache/
 *.utf8.md
 *.knit.md
-.Renviron
-stan/model.rds
 _targets
 report.html
 .Rproj.user
