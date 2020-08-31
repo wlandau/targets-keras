@@ -60,8 +60,8 @@ You can try out the example as long as you have a browser and an internet connec
 ## How to run
 
 1.  If you are running locally instead of [this RStudio cloud workspace](https://rstudio.cloud/project/1430828/),
-    1. install the [`targets`](https://github.com/wlandau/targets) package, as well as the packages listed in the `tar_option_set()` call in [`_targets.R`](https://github.com/wlandau/targets-keras/blob/master/_targets.R). Also install Keras and TensorFlow using `keras::install_keras()` and run `tensorflow::tf_config()` to see if TensorFlow installed correctly.
     1. Download the files in [this repository](https://github.com/wlandau/targets-keras), either [through Git](https://happygitwithr.com/existing-github-first.html#new-rstudio-project-via-git-clone) or through [this link](https://github.com/wlandau/targets-keras/archive/master.zip).
+    1. Run the [setup script](https://github.com/wlandau/targets-keras/blob/master/setup/local.R) to install the required R and Python packages. Then, run `tensorflow::tf_config()` to verify that TensorFlow installed correctly.
 1. Run the `targets` pipeline by either running [`run.R`](https://github.com/wlandau/targets-keras/blob/master/run.R) or [`run.sh`](https://github.com/wlandau/targets-keras/blob/master/run.sh). (The latter is for Unix-like systems only). This computation could take a while.
 1. View the results in the output `report.html` file.
 1. Make changes to the R code or data, rerun the pipeline, and watch `targets` skip steps that are already up to date.
