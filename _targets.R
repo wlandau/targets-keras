@@ -26,29 +26,29 @@ tar_pipeline(
     data_file,
     "data/customer_churn.csv",
     format = "file",
-    deployment = "local"
+    deployment = "master"
   ),
   tar_target(
     data,
     split_data(data_file),
     format = "qs",
-    deployment = "local"
+    deployment = "master"
   ),
   tar_target(
     recipe,
     prepare_recipe(data),
     format = "qs",
-    deployment = "local"
+    deployment = "master"
   ),
   tar_target(
     units,
     c(16, 32),
-    deployment = "local"
+    deployment = "master"
   ),
   tar_target(
     act,
     c("relu", "sigmoid"),
-    deployment = "local"
+    deployment = "master"
   ),
   tar_target(
     run,
@@ -62,7 +62,7 @@ tar_pipeline(
       top_n(1, accuracy) %>%
       head(1),
     format = "fst_tbl",
-    deployment = "local"
+    deployment = "master"
   ),
   tar_target(
     best_model,
