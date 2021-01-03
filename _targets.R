@@ -21,7 +21,9 @@ tar_option_set(
     "yardstick"
   )
 )
-tar_pipeline(
+
+# Define the pipeline. A pipeline is just a list of targets.
+list(
   tar_target(
     data_file,
     "data/customer_churn.csv",
