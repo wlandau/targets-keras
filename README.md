@@ -31,6 +31,26 @@ tar_visnetwork()
 
 ![](./images/graph.png)
 
+## How to access
+
+You can try out this example project as long as you have a browser and
+an internet connection. [Click
+here](https://rstudio.cloud/project/1430828/) to navigate your browser
+to an RStudio Cloud instance. Alternatively, you can clone or download
+this code repository and install the R packages [listed
+here](https://github.com/wlandau/targets-minimal/blob/03835c2aa4679dcf3f28c623a06d7505b18bee17/DESCRIPTION#L25-L30).
+
+## How to run
+
+In the R console, call the
+[`tar_make()`](https://wlandau.github.io/targets/reference/tar_make.html)
+function to run the pipeline. Then, call `tar_read(hist)` to retrieve
+the histogram. Experiment with [other
+functions](https://wlandau.github.io/targets/reference/index.html) such
+as
+[`tar_visnetwork()`](https://wlandau.github.io/targets/reference/tar_visnetwork.html)
+to learn how they work.
+
 ## File structure
 
 The files in this example are organized as follows.
@@ -47,47 +67,15 @@ The files in this example are organized as follows.
 └── report.Rmd
 ```
 
-| File                                                                                                      | Purpose                                                                                                                                                                                                                                                                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`run.sh`](https://github.com/wlandau/targets-keras/blob/main/run.sh)                                   | Shell script to run [`run.R`](https://github.com/wlandau/targets-keras/blob/main/run.R) in a persistent background process. Works on Unix-like systems. Helpful for long computations on servers.                                                                                                                                                                                                         |
+| File                                                                                                    | Purpose                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`run.sh`](https://github.com/wlandau/targets-keras/blob/main/run.sh)                                   | Shell script to run [`run.R`](https://github.com/wlandau/targets-keras/blob/main/run.R) in a persistent background process. Works on Unix-like systems. Helpful for long computations on servers.                                                                                                                                                                                                           |
 | [`run.R`](https://github.com/wlandau/targets-keras/blob/main/run.R)                                     | R script to run `tar_make()` or `tar_make_clustermq()` (uncomment the function of your choice.)                                                                                                                                                                                                                                                                                                             |
 | [`_targets.R`](https://github.com/wlandau/targets-keras/blob/main/_targets.R)                           | The special R script that declares the [`targets`](https://github.com/wlandau/targets) pipeline. See `tar_script()` for details.                                                                                                                                                                                                                                                                            |
 | [`sge.tmpl`](https://github.com/wlandau/targets-keras/blob/main/sge.tmpl)                               | A [`clustermq`](https://github.com/mschubert/clustermq) template file to deploy targets in parallel to a Sun Grid Engine cluster.                                                                                                                                                                                                                                                                           |
-| [`R/functions.R`](https://github.com/wlandau/targets-keras/blob/main/R/functions.R)                     | An R script with user-defined functions. Unlike [`_targets.R`](https://github.com/wlandau/targets-keras/blob/main/_targets.R), there is nothing special about the name or location of this script. In fact, for larger projects, it is good practice to partition functions into multiple files.                                                                                                          |
+| [`R/functions.R`](https://github.com/wlandau/targets-keras/blob/main/R/functions.R)                     | An R script with user-defined functions. Unlike [`_targets.R`](https://github.com/wlandau/targets-keras/blob/main/_targets.R), there is nothing special about the name or location of this script. In fact, for larger projects, it is good practice to partition functions into multiple files.                                                                                                            |
 | [`data/customer_churn.csv`](https://github.com/wlandau/targets-keras/blob/main/data/customer_churn.csv) | A subset of the [IBM Watson Telco Customer Churn dataset](https://www.ibm.com/communities/analytics/watson-analytics-blog/predictive-insights-in-the-telco-customer-churn-data-set/)                                                                                                                                                                                                                        |
 | [`report.Rmd`](https://github.com/wlandau/targets-keras/blob/main/report.Rmd)                           | An R Markdown report summarizing the results of the analysis. For more information on how to include R Markdown reports as reproducible components of the pipeline, see the `tar_render()` function from the [`tarchetypes`](https://wlandau.github.io/tarchetypes) package and the [literate programming chapter of the manual](https://wlandau.github.io/targets-manual/files.html#literate-programming). |
-
-## How to access
-
-You can try out the example as long as you have a browser and an
-internet connection. [Click
-here](https://rstudio.cloud/project/1430828/) to navigate your browser
-to an RStudio Cloud instance. No downloads or installations required.
-
-## How to run
-
-1.  If you are running locally instead of [this RStudio cloud
-    workspace](https://rstudio.cloud/project/1430828/),
-    1.  Download the files in [this
-        repository](https://github.com/wlandau/targets-keras), either
-        [through
-        Git](https://happygitwithr.com/existing-github-first.html#new-rstudio-project-via-git-clone)
-        or through [this
-        link](https://github.com/wlandau/targets-keras/archive/main.zip).
-    2.  Run the [setup
-        script](https://github.com/wlandau/targets-keras/blob/main/setup/local.R)
-        to install the required R and Python packages. Then, run
-        `tensorflow::tf_config()` to verify that TensorFlow installed
-        correctly.
-2.  Run the `targets` pipeline by either running
-    [`run.R`](https://github.com/wlandau/targets-keras/blob/main/run.R)
-    or
-    [`run.sh`](https://github.com/wlandau/targets-keras/blob/main/run.sh).
-    (The latter is for Unix-like systems only). This computation could
-    take a while.
-3.  View the results in the output `report.html` file.
-4.  Make changes to the R code or data, rerun the pipeline, and watch
-    `targets` skip steps that are already up to date.
 
 ## High-performance computing
 
@@ -98,7 +86,7 @@ and
 [`_targets.R`](https://github.com/wlandau/targets-keras/blob/main/_targets.R).
 
 | Mode            | When to use                        | Instructions for [`run.R`](https://github.com/wlandau/targets-keras/blob/main/run.R) | Instructions for [`_targets.R`](https://github.com/wlandau/targets-keras/blob/main/_targets.R) |
-| --------------- | ---------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| Sequential      | Low-spec local machine or Windows. | Uncomment `tar_make()`                                                                 | No action required.                                                                              |
-| Local multicore | Local machine with a Unix-like OS. | Uncomment `tar_make_clustermq()`                                                       | Uncomment `options(clustermq.scheduler = "multicore")`                                           |
-| Sun Grid Engine | Sun Grid Engine cluster.           | Uncomment `tar_make_clustermq()`                                                       | Uncomment `options(clustermq.scheduler = "sge", clustermq.template = "sge.tmpl")`                |
+| --------------- | ---------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| Sequential      | Low-spec local machine or Windows. | Uncomment `tar_make()`                                                               | No action required.                                                                            |
+| Local multicore | Local machine with a Unix-like OS. | Uncomment `tar_make_clustermq()`                                                     | Uncomment `options(clustermq.scheduler = "multicore")`                                         |
+| Sun Grid Engine | Sun Grid Engine cluster.           | Uncomment `tar_make_clustermq()`                                                     | Uncomment `options(clustermq.scheduler = "sge", clustermq.template = "sge.tmpl")`              |
