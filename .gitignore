@@ -16,3 +16,5 @@ vignettes/*.pdf
 _targets
 report.html
 .Rproj.user
+.Rprofile
+r-reticulate
