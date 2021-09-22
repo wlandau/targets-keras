@@ -160,12 +160,14 @@ test_accuracy <- function(churn_data, churn_recipe, model) {
     select(Churn) %>%
     pull()
   yhat_keras_class_vec <- model %>%
-    predict_classes(x_test_tbl) %>%
+    predict(x_test_tbl) %>%
+    `>`(0.5) %>%
+    as.integer() %>%
     as.factor() %>%
     fct_recode(yes = "1", no = "0")
   yhat_keras_prob_vec <-
     model %>%
-    predict_proba(x_test_tbl) %>%
+    predict(x_test_tbl) %>%
     as.vector()
   test_truth <- y_test_vec %>%
     as.factor() %>%
